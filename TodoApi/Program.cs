@@ -25,11 +25,11 @@ builder.Services.AddCors(x => x.AddPolicy("all", a => a.AllowAnyHeader()
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+// }
 
 app.UseCors("all");
 
@@ -77,8 +77,8 @@ app.MapPost("/login/{password}", async (string password, ToDoDbContext db) =>
 });
 
 
-
-// app.MapGet("/sayH", () => ItemF.sayHellow());
+// שלא יפול כשאין נתונים
+app.MapGet("/", () => "Servise Api is running");
 
 app.MapGet("/allTasks", async (ToDoDbContext db , int userId) =>
 {
