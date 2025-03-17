@@ -9,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // הוספת שירותי DbContext עם מחרוזת החיבור
-var connectionString = builder.Configuration.GetConnectionString("ToDoDB");
+// var connectionString = builder.Configuration.GetConnectionString("ToDoDB");
+var connectionString = builder.Configuration["ToDoDB"];
 //הוספת השירות שיהיה זמין בכל מקום באפליקציה
 builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
